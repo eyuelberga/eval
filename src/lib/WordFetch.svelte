@@ -22,7 +22,7 @@
       if (onFetch) {
         onFetch({
           word: payload.word,
-          phonetics: payload.phonetics[1].text,
+          phonetics: payload.phonetics[0].text,
           definitions,
         });
       }
