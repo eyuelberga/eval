@@ -1,5 +1,5 @@
 <script>
-  import fetchWord from "./dictionary";
+  import fetchWord, {fromDictAPI} from "./dictionary";
   import { Button, FormGroup, Input, Row, Col } from "sveltestrap";
 
   let loading = false;
@@ -10,7 +10,7 @@
     loading = true;
     try {
       const payload = (await fetchWord(searchWord))[0];
-      console.log(payload);
+      const dictionary = await fromDictAPI(searchWord);
 
       const meanings = payload.meanings;
       const definitions = [];
@@ -22,7 +22,7 @@
       if (onFetch) {
         onFetch({
           word: payload.word,
-          phonetics: payload.phonetics[0].text,
+          phonetics: dictionary.phonetics,
           definitions,
         });
       }

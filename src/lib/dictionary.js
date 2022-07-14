@@ -5,3 +5,10 @@ const getWord = async (/** @type {any} */ word)=>{
 }
 
 export default getWord;
+
+export const fromDictAPI = async (/** @type {any} */ word)=>{
+  const response = await fetch(`https://dictionary-sigma.vercel.app/${word}`);
+const data = await response.json();
+return data;
+}
+
